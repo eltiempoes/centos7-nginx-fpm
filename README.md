@@ -47,4 +47,6 @@ server {
 ```
 the way to start the PHP application is:
 
-`docker run -d -v /home/user/samples/webapp:/webapp -v /home/user/samples/local.conf:/etc/nginx/conf.d/local.conf -p 8080:80 eltiempoes/centos7-nginx-fpm`
+```
+docker run -d -v /home/user/samples/webapp:/webapp -v /home/user/samples/local.conf:/etc/nginx/conf.d/local.conf -p 8080:80 eltiempoes/centos7-nginx-fpm
+```
