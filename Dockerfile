@@ -18,7 +18,8 @@ RUN sed -ri 's/^(memory_limit = )[0-9]+(M.*)$/\1 256\2/' /etc/php.ini
 
 RUN ln -s /dev/stdout /var/log/nginx/access.log
 RUN ln -s /dev/stderr /var/log/nginx/error.log
-RUN chgrp -R nginx /var/lib/php
+RUN mkdir -p /var/lib/php && \
+	chgrp -R nginx /var/lib/php
 
 COPY startup.sh /usr/local/bin/startup.sh
 RUN chmod -v +x /usr/local/bin/startup.sh
