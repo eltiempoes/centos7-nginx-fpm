@@ -13,8 +13,8 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
     yum clean all
 
 RUN sed -i -e 's/apache/nginx/g' /etc/php-fpm.d/www.conf
-RUN sed -ri 's/^(max_execution_time = )[0-9]+(.*)$/\1120\2/' /etc/php.ini
-RUN sed -ri 's/^(memory_limit = )[0-9]+(M.*)$/\1 256\2/' /etc/php.ini
+RUN sed -ri 's/^(max_execution_time = )[0-9]+(.*)$/\1300\2/' /etc/php.ini
+RUN sed -ri 's/^(memory_limit = )[0-9]+(M.*)$/\1 512\2/' /etc/php.ini
 
 RUN ln -s /dev/stdout /var/log/nginx/access.log
 RUN ln -s /dev/stderr /var/log/nginx/error.log
@@ -24,6 +24,6 @@ RUN mkdir -p /var/lib/php && \
 COPY startup.sh /usr/local/bin/startup.sh
 RUN chmod -v +x /usr/local/bin/startup.sh
 
-EXPOSE 80
+EXPOSE 80 443
 
 CMD ["/usr/local/bin/startup.sh"]
