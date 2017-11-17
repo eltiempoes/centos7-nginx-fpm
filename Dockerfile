@@ -24,6 +24,10 @@ RUN mkdir -p /var/lib/php && \
 COPY startup.sh /usr/local/bin/startup.sh
 RUN chmod -v +x /usr/local/bin/startup.sh
 
+RUN groupadd --gid 1000 cli-user && \
+    adduser -u 1000 -g 1000 cli-user && \
+    usermod -a -G cli-user nginx
+
 EXPOSE 80 443
 
 CMD ["/usr/local/bin/startup.sh"]
