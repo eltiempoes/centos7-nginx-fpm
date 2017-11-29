@@ -15,8 +15,8 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
 RUN sed -i -e 's/apache/nginx/g' /etc/php-fpm.d/www.conf
 RUN sed -ri 's/^(max_execution_time = )[0-9]+(.*)$/\1300\2/' /etc/php.ini
 RUN sed -ri 's/^(memory_limit = )[0-9]+(M.*)$/\1 512\2/' /etc/php.ini
-RUN sed -ri 's/^(upload_max_filesize = )[0-9]+(M.*)$/\1 10\2/' /etc/php.ini
-RUN sed -ri 's/^(post_max_size = )[0-9]+(M.*)$/\1 15\2/' /etc/php.ini
+RUN sed -ri 's/^(upload_max_filesize = )[0-9]+(M.*)$/\1 300\2/' /etc/php.ini
+RUN sed -ri 's/^(post_max_size = )[0-9]+(M.*)$/\1 350\2/' /etc/php.ini
 
 RUN ln -s /dev/stdout /var/log/nginx/access.log
 RUN ln -s /dev/stderr /var/log/nginx/error.log
