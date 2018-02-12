@@ -1,4 +1,5 @@
 FROM centos:7
+ENV REFRESHED_AT 2018-02-12
 LABEL maintainer "it@eltiempo.es"
 LABEL version "1.1"
 LABEL description "Image with NGINX and PHP-FPM"
@@ -9,7 +10,7 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
     yum -y --setopt=tsflags=nodocs update && \
     yum -y --setopt=tsflags=nodocs install epel-release && \
     yum -y --setopt=tsflags=nodocs install nginx net-tools vim && \
-    yum -y --setopt=tsflags=nodocs install php71w php71w-cli php71w-fpm php71w-gd php71w-mbstring php71w-mysqlnd php71w-opcache php71w-pdo php71w-xml php71w-pecl-xdebug php71w-imap php71w-tidy php71w-xmlrpc php71w-soap php71w-mcrypt php71w-intl && \
+    yum -y --setopt=tsflags=nodocs install php72w php72w-cli php72w-fpm php72w-gd php72w-mbstring php72w-mysqlnd php72w-opcache php72w-pdo php72w-xml php72w-pecl-xdebug php72w-imap php72w-tidy php72w-xmlrpc php72w-soap php72w-mcrypt php72w-intl && \
     yum clean all
 
 RUN sed -i -e 's/apache/nginx/g' /etc/php-fpm.d/www.conf
