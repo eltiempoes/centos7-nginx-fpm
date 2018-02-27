@@ -1,5 +1,5 @@
 FROM centos:7
-ENV REFRESHED_AT 2018-02-12
+ENV REFRESHED_AT 2018-02-27
 LABEL maintainer "it@eltiempo.es"
 LABEL version "1.1"
 LABEL description "Image with NGINX and PHP-FPM"
@@ -22,7 +22,7 @@ RUN sed -ri 's/^(post_max_size = )[0-9]+(M.*)$/\1 350\2/' /etc/php.ini
 RUN ln -s /dev/stdout /var/log/nginx/access.log
 RUN ln -s /dev/stderr /var/log/nginx/error.log
 RUN mkdir -p /var/lib/php && \
-	chgrp -R nginx /var/lib/php
+	chown -R nginx.nginx /var/lib/php
 
 COPY startup.sh /usr/local/bin/startup.sh
 RUN chmod -v +x /usr/local/bin/startup.sh
