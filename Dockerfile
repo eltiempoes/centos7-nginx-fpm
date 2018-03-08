@@ -1,7 +1,7 @@
 FROM centos:7
-ENV REFRESHED_AT 2018-02-27
+ENV REFRESHED_AT 2018-03-08
 LABEL maintainer "it@eltiempo.es"
-LABEL version "1.1"
+LABEL version "1.1.1"
 LABEL description "Image with NGINX and PHP-FPM"
 ENV container docker
 
@@ -31,6 +31,6 @@ RUN groupadd --gid 1000 cli-user && \
     adduser -u 1000 -g 1000 cli-user && \
     usermod -a -G cli-user nginx
 
-EXPOSE 80 443
+EXPOSE 80 443 8080
 
 CMD ["/usr/local/bin/startup.sh"]
