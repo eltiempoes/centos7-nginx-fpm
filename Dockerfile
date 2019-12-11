@@ -1,7 +1,7 @@
 FROM centos:7
-ENV REFRESHED_AT 2018-03-08
+ENV REFRESHED_AT 2019-12-11
 LABEL maintainer "it@eltiempo.es"
-LABEL version "1.1.2"
+LABEL version "1.1.3"
 LABEL description "Image with NGINX and PHP-FPM"
 ENV container docker
 
@@ -10,7 +10,7 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
     yum -y --setopt=tsflags=nodocs update && \
     yum -y --setopt=tsflags=nodocs install epel-release yum-utils && \
     yum -y --setopt=tsflags=nodocs install net-tools vim && \
-    yum -y --setopt=tsflags=nodocs install php72w php72w-cli php72w-fpm php72w-gd php72w-mbstring php72w-mysqlnd php72w-opcache php72w-pdo php72w-xml php72w-pecl-xdebug php72w-imap php72w-tidy php72w-xmlrpc php72w-soap php72w-mcrypt php72w-intl && \
+    yum -y --setopt=tsflags=nodocs install php73w php73w-cli php73w-fpm php73w-gd php73w-mbstring php73w-mysqlnd php73w-opcache php73w-pdo php73w-xml php73w-pecl-xdebug php73w-imap php73w-tidy php73w-xmlrpc php73w-soap php73w-mcrypt php73w-intl && \
     yum clean all
 
 RUN yum-config-manager --add-repo https://openresty.org/package/centos/openresty.repo && \
