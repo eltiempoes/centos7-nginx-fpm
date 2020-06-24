@@ -1,16 +1,19 @@
 FROM centos:7
-ENV REFRESHED_AT 2018-03-08
+ENV REFRESHED_AT 2019-06-24
 LABEL maintainer "it@eltiempo.es"
-LABEL version "1.1.1"
+LABEL version "1.2"
 LABEL description "Image with NGINX and PHP-FPM"
 ENV container docker
 
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && \
+    rpm -Uvh https://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
     yum -y --setopt=tsflags=nodocs update && \
+    yum -y --setopt=tsflags=nodocs upgrade && \
     yum -y --setopt=tsflags=nodocs install epel-release yum-utils && \
+    yum-config-manager --enable remi-php74 && \
     yum -y --setopt=tsflags=nodocs install net-tools vim && \
-    yum -y --setopt=tsflags=nodocs install php71w php71w-cli php71w-fpm php71w-gd php71w-mbstring php71w-mysqlnd php71w-opcache php71w-pdo php71w-xml php71w-pecl-xdebug php71w-imap php71w-tidy php71w-xmlrpc php71w-soap php71w-mcrypt php71w-intl && \
+    yum -y --setopt=tsflags=nodocs install php php-cli php-fpm php-gd php-mbstring php-mysqlnd php-opcache php-pdo php-xml php-pecl-xdebug php-imap php-tidy php-xmlrpc php-soap php-mcrypt php-intl && \
     yum clean all
 
 RUN yum-config-manager --add-repo https://openresty.org/package/centos/openresty.repo && \
