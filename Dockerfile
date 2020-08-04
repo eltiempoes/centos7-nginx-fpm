@@ -36,6 +36,7 @@ RUN sed  -i '1i user  nginx;' /usr/local/openresty/nginx/conf/nginx.conf
 RUN mkdir -p /var/log/nginx && \
     mkdir -p /var/lib/php && \
     mkdir -p /etc/nginx/conf.d && \
+    mkdir -p /run/php-fpm && \ 
     chown nginx.nginx /var/log/nginx && \
     chown -R nginx.nginx /var/lib/php && \
     ln -s /dev/stdout /var/log/nginx/access.log && \
