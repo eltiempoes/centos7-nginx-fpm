@@ -13,7 +13,7 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
     yum -y --setopt=tsflags=nodocs install epel-release yum-utils && \
     yum-config-manager --enable remi-php74 && \
     yum -y --setopt=tsflags=nodocs install net-tools vim && \
-    yum -y --setopt=tsflags=nodocs install php php-cli php-fpm php-gd php-mbstring php-mysqlnd php-opcache php-pdo php-xml php-pecl-xdebug php-imap php-tidy php-xmlrpc php-soap php-mcrypt php-intl && \
+    yum -y --setopt=tsflags=nodocs install php php-cli php-fpm php-gd php-mbstring php-mysqlnd php-opcache php-pdo php-xml php-pecl-xdebug php-imap php-tidy php-xmlrpc php-soap php-mcrypt php-intl php-pecl-zip && \
     yum clean all
 
 RUN yum-config-manager --add-repo https://openresty.org/package/centos/openresty.repo && \
